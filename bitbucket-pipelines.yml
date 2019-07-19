@@ -11,8 +11,7 @@ pipelines:
           - docker
         name: build and publish docker image.
         services:
-          docker: # enable Docker for your repository
-            - memory: 4096
+          - docker # enable Docker for your repository
 
         script: # Modify the commands below to build your repository.
           # set DOCKER_HUB_USERNAME and DOCKER_HUB_PASSWORD as environment variables
@@ -54,3 +53,8 @@ pipelines:
           # Create ECS Service
           - aws ecs list-services --cluster "${ECS_CLUSTER_NAME}"  | grep "${ECS_SERVICE_NAME}" || aws ecs create-service --service-name "${ECS_SERVICE_NAME}" --cluster "${ECS_CLUSTER_NAME}" --task-definition "${ECS_TASK_NAME}" --desired-count 1
           - aws ecs update-service --cluster "${ECS_CLUSTER_NAME}" --service "${ECS_SERVICE_NAME}" --task-definition "${ECS_TASK_NAME}:${TASK_VERSION}"
+
+definitions:
+  services:
+    docker:
+      memory: 3072
