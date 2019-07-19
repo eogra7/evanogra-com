@@ -6,6 +6,9 @@ image: node:12
 pipelines:
   default:
     - step:
+        caches:
+          - node
+          - docker
         name: build and publish docker image.
         services:
           - docker # enable Docker for your repository
