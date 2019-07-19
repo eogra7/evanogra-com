@@ -11,13 +11,15 @@ pipelines:
           - docker
         name: build and publish docker image.
         services:
-          - docker # enable Docker for your repository
+          docker: # enable Docker for your repository
+            - memory: 4096
+
         script: # Modify the commands below to build your repository.
           # set DOCKER_HUB_USERNAME and DOCKER_HUB_PASSWORD as environment variables
           # Docker variables
           - export IMAGE_NAME="${DOCKER_HUB_USERNAME}/${BITBUCKET_REPO_SLUG}:${BITBUCKET_BUILD_NUMBER}"
           # build the Node app
-          - npm install
+          # - npm install
           # build the Docker image (this will use the Dockerfile in the root of the repo)
           - docker build -t $IMAGE_NAME .
           # authenticate with the Docker Hub registry
