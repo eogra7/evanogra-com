@@ -22,7 +22,7 @@ pipelines:
     - step:
         name: deploy-to-ecs
         image: atlassian/pipelines-awscli:latest
-        deployment: test
+        deployment: production
         script:
           # AWS authentication variables
           # set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY as environment variables
@@ -47,4 +47,3 @@ pipelines:
           # Create ECS Service
           - aws ecs list-services --cluster "${ECS_CLUSTER_NAME}"  | grep "${ECS_SERVICE_NAME}" || aws ecs create-service --service-name "${ECS_SERVICE_NAME}" --cluster "${ECS_CLUSTER_NAME}" --task-definition "${ECS_TASK_NAME}" --desired-count 1
           - aws ecs update-service --cluster "${ECS_CLUSTER_NAME}" --service "${ECS_SERVICE_NAME}" --task-definition "${ECS_TASK_NAME}:${TASK_VERSION}"
-          # Follow https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html for instrunctions
