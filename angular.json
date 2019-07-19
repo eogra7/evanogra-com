@@ -1,39 +1,37 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "newProjectRoot": "projects",
+  "newProjectRoot": "",
   "projects": {
     "evanogra-com": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
+      "root": "apps\\evanogra-com",
+      "sourceRoot": "apps\\evanogra-com\\src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/evanogra-com",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist\\apps\\evanogra-com",
+            "index": "apps/evanogra-com/src/index.html",
+            "main": "apps/evanogra-com/src/main.ts",
+            "polyfills": "apps/evanogra-com/src/polyfills.ts",
+            "tsConfig": "apps\\evanogra-com\\tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/evanogra-com/src/favicon.ico",
+              "apps/evanogra-com/src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["apps/evanogra-com/src/styles.css"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "apps/evanogra-com/src/environments/environment.ts",
+                  "with": "apps/evanogra-com/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -75,17 +73,15 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "apps/evanogra-com/src/test.ts",
+            "polyfills": "apps/evanogra-com/src/polyfills.ts",
+            "tsConfig": "apps\\evanogra-com\\tsconfig.spec.json",
+            "karmaConfig": "apps\\evanogra-com\\karma.conf.js",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "apps/evanogra-com/src/favicon.ico",
+              "apps/evanogra-com/src/assets"
             ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "styles": ["apps/evanogra-com/src/styles.css"],
             "scripts": []
           }
         },
@@ -93,19 +89,22 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "apps\\evanogra-com\\tsconfig.app.json",
+              "apps\\evanogra-com\\tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
-        },
+        }
+      }
+    },
+    "evanogra-com-e2e": {
+      "projectType": "application",
+      "root": "apps\\evanogra-com-e2e",
+      "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
+            "protractorConfig": "apps\\evanogra-com-e2e\\protractor.conf.js",
             "devServerTarget": "evanogra-com:serve"
           },
           "configurations": {
@@ -113,8 +112,28 @@
               "devServerTarget": "evanogra-com:serve:production"
             }
           }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps\\evanogra-com-e2e\\tsconfig.json",
+            "exclude": ["**/node_modules/**"]
+          }
         }
       }
-    }},
-  "defaultProject": "evanogra-com"
+    }
+  },
+  "defaultProject": "evanogra-com",
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  }
 }
