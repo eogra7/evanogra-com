@@ -1,6 +1,8 @@
 options:
   docker: true
 
+image: node:12
+
 pipelines:
   default:
     - step:
