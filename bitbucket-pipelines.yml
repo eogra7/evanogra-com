@@ -50,6 +50,8 @@ pipelines:
             '[{"name":"app","image":"'"${IMAGE_NAME}"'","memory":1024}]'
             --requires-compatibilities
             '["FARGATE"]'
+            --network-mode
+            '["awsvps"]'
             | jq --raw-output '.taskDefinition.revision')
 
           - echo "Registered ECS Task Definition:" "${TASK_VERSION}"
