@@ -5,7 +5,6 @@ RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
 WORKDIR /ng-app
 COPY . .
 RUN $(npm bin)/ng build --prod --build-optimizer
-RUN find
 
 FROM nginx:1.13.3-alpine
 COPY nginx/default.conf /etc/nginx/conf.d/
