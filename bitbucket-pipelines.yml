@@ -49,7 +49,7 @@ pipelines:
             - export IMAGE_NAME="${DOCKER_HUB_USERNAME}/${BITBUCKET_REPO_SLUG}:${BITBUCKET_BUILD_NUMBER}dev"
             # ECS variables
             - export ECS_CLUSTER_NAME="${BITBUCKET_REPO_OWNER}"
-            - export ECS_SERVICE_NAME="${BITBUCKET_REPO_SLUG}"
+            - export ECS_SERVICE_NAME="${BITBUCKET_REPO_SLUG}-dev"
             - export ECS_TASK_NAME="${BITBUCKET_REPO_SLUG}-dev"
             # Create ECS cluster, task, service
             - aws ecs list-clusters | grep "${ECS_CLUSTER_NAME}" || aws ecs create-cluster --cluster-name "${ECS_CLUSTER_NAME}"
