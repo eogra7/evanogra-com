@@ -46,7 +46,7 @@ pipelines:
           - export TASK_VERSION=$(aws ecs register-task-definition
             --family "${ECS_TASK_NAME}"
             --container-definitions
-           '[{"name":"app","image":"'"${IMAGE_NAME}"'","memory":512,"logConfiguration":{"logDriver":"awslogs","options":{"awslogs-group":"/ecs/evanogra-com","awslogs-region":"us-east-1","awslogs-stream-prefix":"ecs"}},"portMappings":[{"hostPort":80,"protocol":"tcp","containerPort":80}],"essential":"true"}]'
+           '[{"name":"app","image":"'"${IMAGE_NAME}"'","memory":512,"logConfiguration":{"logDriver":"awslogs","options":{"awslogs-group":"/ecs/evanogra-com","awslogs-region":"us-east-1","awslogs-stream-prefix":"ecs"}},"portMappings":[{"hostPort":80,"protocol":"tcp","containerPort":80}],"essential":true}]'
             | jq --raw-output '.taskDefinition.revision')
           # Create ECS Service
           - aws ecs list-services --cluster "${ECS_CLUSTER_NAME}"  | grep "${ECS_SERVICE_NAME}" || aws ecs create-service --service-name "${ECS_SERVICE_NAME}" --cluster "${ECS_CLUSTER_NAME}" --task-definition "${ECS_TASK_NAME}" --desired-count 1
