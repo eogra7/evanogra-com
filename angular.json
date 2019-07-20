@@ -6,14 +6,14 @@
     "evanogra-com": {
       "projectType": "application",
       "schematics": {},
-      "root": "apps\\evanogra-com",
-      "sourceRoot": "apps\\evanogra-com\\src",
+      "root": "apps/evanogra-com",
+      "sourceRoot": "apps/evanogra-com/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist\\apps\\evanogra-com",
+            "outputPath": "dist/apps/evanogra-com",
             "index": "apps/evanogra-com/src/index.html",
             "main": "apps/evanogra-com/src/main.ts",
             "polyfills": "apps/evanogra-com/src/polyfills.ts",
