@@ -23,7 +23,6 @@ pipelines:
           name: build and publish docker image.
           services:
             - docker # enable Docker for your repository
-          deployment: staging
           script: # Modify the commands below to build your repository.
             # set DOCKER_HUB_USERNAME and DOCKER_HUB_PASSWORD as environment variables
             # Docker variables
@@ -70,7 +69,6 @@ pipelines:
           name: build and publish docker image.
           services:
             - docker # enable Docker for your repository
-          deployment: production
           script: # Modify the commands below to build your repository.
             # set DOCKER_HUB_USERNAME and DOCKER_HUB_PASSWORD as environment variables
             # Docker variables
