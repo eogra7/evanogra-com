@@ -51,7 +51,7 @@ pipelines:
             --requires-compatibilities
             '["FARGATE"]'
             --network-mode
-            '["awsvps"]'
+            'awsvpc'
             | jq --raw-output '.taskDefinition.revision')
 
           - echo "Registered ECS Task Definition:" "${TASK_VERSION}"
