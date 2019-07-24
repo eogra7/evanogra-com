@@ -1,4 +1,4 @@
-# EvanograCom
+# EvanograCom [![Netlify Status](https://api.netlify.com/api/v1/badges/41c45781-0421-44bf-b455-64355f79aadb/deploy-status)](https://app.netlify.com/sites/unruffled-dubinsky-0c1670/deploys)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
 
